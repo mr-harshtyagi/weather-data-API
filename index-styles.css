@@ -1,0 +1,14 @@
+.top-container{
+    background-color: #D6E5FA;
+    color: #323232;
+    border-radius: 10px;
+    width: 40%;
+    padding: 2%;
+    margin : 10% auto 0 auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+    text-align: center;
+}
+
+.margin{
+    margin-top: 20px;
+}
