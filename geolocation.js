@@ -21,7 +21,7 @@ function FindMe() {
       body: JSON.stringify(data),
     };
     fetch("/currentlocation", options).then((res) => {
-      console.log(res);
+      console.log(res); //logs on client side because geolocation.js runs on client
     });
   }
   function error() {

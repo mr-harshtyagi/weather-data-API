@@ -92,26 +92,28 @@ app.post("/currentlocation", function (req, res) {
           "http://openweathermap.org/img/wn/" +
           weatherData.weather[0].icon +
           "@2x.png";
-        //   console.log(city_Name);
-        //   console.log(country);
-        //   console.log(city_Temp);
+          console.log(city_Name);
+          console.log(country);
+          console.log(city_Temp);
 
-        // console.log(max_Temp);
-        // console.log(min_Temp);
-        // console.log(feels_Like);
-        // console.log(humidity);
-        // console.log(description);
-        // res.render("weather-data", {
-        //   city: city_Name,
-        //   temp: city_Temp,
-        //   country: country,
-        //   max_Temp: max_Temp,
-        //   min_Temp: min_Temp,
-        //   feels_Like: feels_Like,
-        //   humidity: humidity,
-        //   description: description,
-        //   icon: icon,
-        // });
+        console.log(max_Temp);
+        console.log(min_Temp);
+        console.log(feels_Like);
+        console.log(humidity);
+        console.log(description);  /////
+
+        
+        res.render("weather-data", {
+          city: city_Name,
+          temp: city_Temp,
+          country: country,
+          max_Temp: max_Temp,
+          min_Temp: min_Temp,
+          feels_Like: feels_Like,
+          humidity: humidity,
+          description: description,
+          icon: icon,
+        });
         res.sendFile(__dirname + "/error.html");
       });
     } else {
