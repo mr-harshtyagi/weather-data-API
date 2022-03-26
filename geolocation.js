@@ -1,5 +1,6 @@
 
 document.getElementById("current-location").addEventListener("click", FindMe);
+const body =document.getElementById("html");
 
 function FindMe() {
   if (!navigator.geolocation) {
@@ -8,22 +9,30 @@ function FindMe() {
     navigator.geolocation.getCurrentPosition(success, error);
     console.log("Location is available");
   }
+
+  //success function
   function success(position) {
     const data = {
       lat: position.coords.latitude,
       long: position.coords.longitude,
     };
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    };
-    fetch("/currentlocation", options).then((res) => {
-      console.log(res); //logs on client side because geolocation.js runs on client
-    });
+    async function postCoords(data){
+      const response = await fetch("/currentlocation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+      });
+
+      return response.text();
+    }
+
+    postCoords(data).then(data=> html.innerHTML = data)
+    
   }
+
+  //error function
   function error() {
     console.log("Unable to retrieve your location");
   }

@@ -60,8 +60,8 @@ app.post("/", function (req, res) {
   });
 });
 
-app.get("/currentlocation", function (req, res) {
-  res.sendFile(__dirname + "/error.html");
+app.get("/currentlocation", function(req,res){
+  res.sendFile(__dirname +"/error.html")
 });
 
 app.post("/currentlocation", function (req, res) {
@@ -77,7 +77,7 @@ app.post("/currentlocation", function (req, res) {
     "&units=metric";
 
   https.get(url, function (response) {
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 ) {
       response.on("data", function (data) {
         const weatherData = JSON.parse(data);
         const city_Name = weatherData.name;
@@ -92,18 +92,8 @@ app.post("/currentlocation", function (req, res) {
           "http://openweathermap.org/img/wn/" +
           weatherData.weather[0].icon +
           "@2x.png";
-          console.log(city_Name);
-          console.log(country);
-          console.log(city_Temp);
 
-        console.log(max_Temp);
-        console.log(min_Temp);
-        console.log(feels_Like);
-        console.log(humidity);
-        console.log(description);  /////
-
-        
-        res.render("weather-data", {
+        res.render( "weather-data",{
           city: city_Name,
           temp: city_Temp,
           country: country,
@@ -114,10 +104,10 @@ app.post("/currentlocation", function (req, res) {
           description: description,
           icon: icon,
         });
-        res.sendFile(__dirname + "/error.html");
       });
     } else {
-      res.sendFile(__dirname + "/error.html");
+      console.log("Error in Response from weather data API");
+      res.send({message : "Weather data API is not responding"});
     }
   });
 });
